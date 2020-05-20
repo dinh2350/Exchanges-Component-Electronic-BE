@@ -37,3 +37,11 @@ module.exports.update = function (req, res) {
       .catch((e) => res.status(500).send("err not save"));
   });
 };
+
+module.exports.deleteById = function (req, res) {
+  var { id } = req.params;
+  User.deleteOne({ _id: id }, function (err, user) {
+    if (err) return res.status(500).send("err not delete");
+    res.status(200).send(user);
+  });
+};
