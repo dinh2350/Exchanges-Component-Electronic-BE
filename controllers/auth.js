@@ -3,6 +3,9 @@ var bcrypt = require("bcryptjs");
 const { promisify } = require("util"); // built-in nodejs
 const jwt = require("jsonwebtoken");
 
+/**
+ * Todo register with name, yearOld, phone, address, email, password
+ */
 module.exports.register = function (req, res) {
   var { name, yearOld, phone, address, email, password } = req.body;
   var newUser = new User({ name, yearOld, phone, address, email, password });

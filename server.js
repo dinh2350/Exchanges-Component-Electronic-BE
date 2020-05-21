@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var router = require("./routers/index");
 // init express
 var app = express();
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(router);
 app.get("/", (req, res) => res.send("Hello World!"));
