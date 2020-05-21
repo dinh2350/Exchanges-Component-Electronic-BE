@@ -12,8 +12,8 @@ app.listen(port, () =>
 );
 
 // init mongodb
-var database = process.env.DATABASE_URL || "mongodb://localhost/ece";
-mongoose.connect("mongodb://localhost/ece", {
+var database_url = process.env.DATABASE_URL || "mongodb://localhost/ece";
+mongoose.connect(database_url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
