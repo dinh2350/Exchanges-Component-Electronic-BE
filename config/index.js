@@ -17,7 +17,7 @@ switch (process.env.NODE_ENV) {
     host = `localhost:${port}`;
     break;
 
-  case "staging":
+  case "production":
     mongo_uri = process.env.MONGO_STAGING_URL;
     secret_key = process.env.SECRET_KEY_STAGING;
     email = process.env.EMAIL_STAGING;
@@ -29,7 +29,6 @@ switch (process.env.NODE_ENV) {
   default:
     break;
 }
-
 module.exports = {
   mongo_uri,
   secret_key,

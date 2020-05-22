@@ -4,8 +4,8 @@ var router = require("./routers/index");
 var config = require("./config/index");
 // init express
 var app = express();
-// var port = process.env.PORT || config.port;
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || config.port;
+// var port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(router);
 app.get("/", (req, res) => res.send("Hello World!"));
