@@ -1,5 +1,5 @@
 var { User } = require("../models/User");
-
+var config = require("../config/index");
 module.exports.create = async function (req, res) {
   try {
     var { name, yearOld, phone, address, email, password } = req.body;
@@ -45,5 +45,17 @@ module.exports.deleteById = function (req, res) {
   User.deleteOne({ _id: id }, function (err, user) {
     if (err) return res.status(500).send("err not delete");
     res.status(200).send(user);
+  });
+};
+
+module.exports.uploadAvatar = function (req, res) {
+  var { id } = req.params;
+  User.findById({ _id: id }, function (err, user) {
+    if (err) return res.status(500).send("err not found user");
+    user.avatar = config.host + "/" + req.file.path;
+    user
+      .save()
+      .then((user) => res.status(200).send(user))
+      .catch((err) => res.status(500).send("err save user"));
   });
 };
