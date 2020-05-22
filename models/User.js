@@ -12,6 +12,7 @@ var userSchema = Schema({
   email: { type: String, require: true },
   password: { type: String, require: true },
   address: { type: String, require: true },
+  avatar: { type: String, require: true },
   createAt: { type: Date, default: Date.now },
 });
 

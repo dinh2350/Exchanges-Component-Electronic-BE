@@ -4,6 +4,7 @@ var router = require("./routers/index");
 var config = require("./config/index");
 // init express
 var app = express();
+app.use(express.static("public"));
 var port = process.env.PORT || config.port;
 // var port = process.env.PORT || 3000;
 app.use(express.json());
