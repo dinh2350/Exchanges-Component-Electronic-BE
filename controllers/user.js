@@ -52,6 +52,7 @@ module.exports.uploadAvatar = function (req, res) {
   var { id } = req.params;
   User.findById({ _id: id }, function (err, user) {
     if (err) res.status(404).send("not found user");
+
     user.avatar = config.host + "/" + req.file.path;
     user
       .save()
