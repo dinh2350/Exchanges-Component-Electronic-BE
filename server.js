@@ -1,10 +1,9 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var router = require("./routers/index");
-var keys = require("./configs/index");
 // init express
 var app = express();
-var port = process.env.PORT || keys.port;
+var port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(router);
 app.get("/", (req, res) => res.send("Hello World!"));
@@ -14,7 +13,7 @@ app.listen(port, () =>
 
 // init mongodb
 var database_url = process.env.DATABASE_URL || "mongodb://localhost/ece";
-mongoose.connect(keys.mongo_uri, {
+mongoose.connect(database_url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
