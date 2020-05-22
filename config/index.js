@@ -14,7 +14,7 @@ switch (process.env.NODE_ENV) {
     port = process.env.PORT_LOCAL;
     email = process.env.EMAIL_LOCAL;
     password = process.env.PASSWORD_LOCAL;
-    host = `http://localhost:${port}`;
+    host = `localhost:${port}`;
     break;
 
   case "production":
