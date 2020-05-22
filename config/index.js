@@ -23,7 +23,7 @@ switch (process.env.NODE_ENV) {
     email = process.env.EMAIL_STAGING;
     password = process.env.PASSWORD_STAGING;
     // port: Heroku se tao cho minh
-    host: "https://san-e2c.herokuapp.com";
+    host = "https://san-e2c.herokuapp.com";
     break;
 }
 module.exports = {
