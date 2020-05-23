@@ -1,5 +1,5 @@
 var { Post } = require("../models/Post");
-
+var config = require("../config/index");
 module.exports.create = async function (req, res) {
   var { images, title, price, description, status, type, address } = req.body;
   var newPost = new Post({
@@ -51,14 +51,15 @@ module.exports.deleteById = function (req, res) {
   });
 };
 
-module.exports.uploadAvatar = function (req, res) {
-  //   var { id } = req.params;
-  //   User.findById({ _id: id }, function (err, user) {
-  //     if (err) res.status(404).send("not found user");
-  //     user.avatar = config.host + "/" + req.file.path;
-  //     user
-  //       .save()
-  //       .then((user) => res.status(200).send(user))
-  //       .catch((e) => res.status(500).send("err not save"));
-  //   });
+module.exports.uploadImages = function (req, res) {
+  var { id } = req.params;
+  Post.findById({ _id: id }, function (err, post) {
+    if (err) return res.status(500).send("err not found");
+    var listImages = req.files.map((images) => config.host + "/" + images.path);
+    post.images = listImages;
+    post
+      .save()
+      .then((post) => res.status(200).send(post))
+      .catch((err) => res.status(500).send("err save"));
+  });
 };
