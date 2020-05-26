@@ -6,6 +6,7 @@ var {
   update,
   deleteById,
   uploadAvatar,
+  getUser,
 } = require("../controllers/user");
 app = express();
 
@@ -14,5 +15,5 @@ app.get("/", getAll);
 app.put("/:id", update);
 app.delete("/:id", deleteById);
 app.post("/:id/avatar", uploadImage("avatar"), uploadAvatar);
-
+app.get("/:id", getUser);
 module.exports = app;

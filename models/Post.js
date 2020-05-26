@@ -7,8 +7,7 @@ var postSchema = Schema({
   status: { type: String, require: true },
   type: { type: String, require: true },
   address: { type: String, require: true },
-
-  // link users
+  user: { type: Schema.Types.ObjectId, require: true },
 });
 var Post = model("Post", postSchema);
 module.exports = {

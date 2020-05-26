@@ -1,7 +1,16 @@
 var { Post } = require("../models/Post");
 var config = require("../config/index");
 module.exports.create = async function (req, res) {
-  var { images, title, price, description, status, type, address } = req.body;
+  var {
+    images,
+    title,
+    price,
+    description,
+    status,
+    type,
+    address,
+    user,
+  } = req.body;
   var newPost = new Post({
     images,
     title,
@@ -10,6 +19,7 @@ module.exports.create = async function (req, res) {
     status,
     type,
     address,
+    user,
   });
   newPost
     .save()
