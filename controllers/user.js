@@ -1,4 +1,5 @@
 var { User } = require("../models/User");
+var { Post } = require("../models/Post");
 var config = require("../config/index");
 module.exports.create = async function (req, res) {
   try {
@@ -38,6 +39,19 @@ module.exports.update = function (req, res) {
       .then((user) => res.status(200).send(user))
       .catch((e) => res.status(500).send("err not save"));
   });
+};
+
+/**
+ * @TODO get detail user with post
+ */
+
+module.exports.getUser = async function (req, res) {
+  var { id } = req.params;
+  var resUser = await User.findById({ _id: id }).exec();
+  var resPost = await Post.find({ user: id }).exec();
+  console.log(resUser);
+  console.log(resPost);
+  res.status(200).send({ user: resUser, post: resPost });
 };
 
 module.exports.deleteById = function (req, res) {
